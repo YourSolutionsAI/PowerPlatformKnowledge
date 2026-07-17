@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Power Platform Brief vom 18. Juli 2026: Copilot Studio, Dataverse, Governance, ALM, Lizenzierung und Managed Environments.">
+  <title>Power Platform Brief · 18. Juli 2026</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg:#f3f6fb; --surface:#fff; --surface-soft:#eef3fb; --text:#162033; --muted:#61708a;
+      --accent:#5b4ee8; --accent-dark:#4035bd; --border:#dbe3f0; --green:#147d55; --green-bg:#eaf8f2;
+      --amber:#9a6500; --amber-bg:#fff7df; --blue:#1f5fbf; --blue-bg:#edf5ff; --violet:#6c3cc7;
+      --shadow:0 18px 50px rgba(34,48,78,.10);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 0%,rgba(91,78,232,.13),transparent 32rem),var(--bg);color:var(--text);line-height:1.65}
+    a{color:var(--accent-dark);text-underline-offset:3px}.wrap{width:min(1100px,calc(100% - 32px));margin:0 auto}
+    header{padding:26px 0}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:800}.logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),#8d5cf6);box-shadow:0 10px 24px rgba(91,78,232,.28)}.back{text-decoration:none;font-weight:700;color:var(--muted)}
+    .hero{padding:58px 0 34px}.kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid rgba(91,78,232,.22);border-radius:999px;background:rgba(255,255,255,.75);color:var(--accent-dark);font-size:.86rem;font-weight:800}.hero h1{max-width:880px;margin:20px 0 18px;font-size:clamp(2.45rem,6vw,5.25rem);line-height:1;letter-spacing:-.052em}.lead{max-width:820px;margin:0;color:var(--muted);font-size:clamp(1.08rem,2vw,1.28rem)}
+    .summary{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;padding:28px 0 30px}.card{background:rgba(255,255,255,.9);border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow)}.summary-main{padding:30px}.summary-side{padding:26px}.summary h2{margin:0 0 12px;font-size:1.55rem}.summary p{color:var(--muted)}.topline{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.pill{display:inline-flex;padding:6px 9px;border-radius:999px;background:var(--surface-soft);color:var(--muted);font-size:.82rem;font-weight:750}.pill.confirmed{background:var(--green-bg);color:var(--green)}.pill.preview{background:var(--amber-bg);color:var(--amber)}.pill.community{background:var(--blue-bg);color:var(--blue)}
+    .key-points{display:grid;gap:12px;margin:18px 0 0;padding:0;list-style:none}.key-points li{padding:14px 15px;border:1px solid var(--border);border-radius:14px;background:#fff}.key-points strong{display:block;margin-bottom:3px}.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.score div{padding:14px;border-radius:14px;background:var(--surface-soft)}.score strong{display:block;font-size:1.4rem;color:var(--accent-dark)}.score span{font-size:.82rem;color:var(--muted)}
+    .content{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:26px;align-items:start;padding:18px 0 80px}.articles{display:grid;gap:20px}.article{padding:30px}.article h2{margin:10px 0 10px;font-size:clamp(1.45rem,3vw,2rem);line-height:1.2}.article p{margin:10px 0;color:#33405a}.article .intro{color:var(--muted);font-size:1.03rem}.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.fact{padding:16px;border:1px solid var(--border);border-radius:15px;background:var(--surface-soft)}.fact strong{display:block;margin-bottom:5px}.action{margin-top:20px;padding:18px;border-left:4px solid var(--accent);border-radius:0 14px 14px 0;background:rgba(91,78,232,.065)}.action strong{display:block;color:var(--accent-dark);margin-bottom:4px}.sources-inline{margin-top:16px;font-size:.9rem;color:var(--muted)}
+    aside{position:sticky;top:20px}.toc{padding:22px}.toc h3{margin:0 0 12px}.toc a{display:block;padding:8px 0;text-decoration:none;color:var(--muted);border-bottom:1px solid var(--border);font-size:.92rem}.toc a:last-child{border:0}.toc a:hover{color:var(--accent)}
+    .checklist{padding:30px;margin-top:20px}.checklist h2{margin-top:0}.checks{display:grid;gap:11px;padding:0;list-style:none}.checks li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}.checks span:first-child{width:25px;height:25px;border-radius:8px;display:grid;place-items:center;background:var(--green-bg);color:var(--green);font-weight:900}
+    .source-list{padding:30px;margin-top:20px}.source-list h2{margin-top:0}.source-list ol{padding-left:22px}.source-list li{margin:10px 0;color:var(--muted)}
+    footer{border-top:1px solid var(--border);padding:28px 0 42px;color:var(--muted);font-size:.9rem}
+    @media(max-width:820px){.summary,.content{grid-template-columns:1fr}.facts{grid-template-columns:1fr}aside{position:static}.hero{padding-top:38px}.score{grid-template-columns:1fr 1fr}.article,.summary-main{padding:24px}}
+    @media(max-width:520px){.score{grid-template-columns:1fr}.back{font-size:.9rem}.hero h1{font-size:2.55rem}}
+  </style>
+</head>
+<body>
+<header class="wrap"><div class="nav"><a class="brand" href="../index.html"><span class="logo">PP</span><span>Power Platform Brief</span></a><a class="back" href="../index.html">← Zur Übersicht</a></div></header>
+<main>
+  <section class="hero wrap">
+    <span class="kicker">Sonderausgabe · Stand 18. Juli 2026</span>
+    <h1>Agents werden zur Plattformfrage – nicht nur zum Maker-Feature.</h1>
+    <p class="lead">Die erste Ausgabe bündelt die wichtigsten Entwicklungen seit Juni: eine neue Copilot-Studio-Laufzeit, agentische Dataverse-Funktionen, konkretere Identitäts- und Governance-Bausteine sowie Lizenz- und Release-Vorbereitungen, die jetzt in Kundenprojekten relevant werden.</p>
+  </section>
+
+  <section class="summary wrap">
+    <article class="card summary-main">
+      <div class="topline"><span class="pill confirmed">Bestätigt</span><span class="pill preview">Preview & Roadmap</span><span class="pill community">Community</span></div>
+      <h2>Executive Summary</h2>
+      <p>Microsoft verschiebt den Schwerpunkt sichtbar von einzelnen Copilot-Funktionen hin zu einer governbaren Agentenplattform. Für Architekturentscheidungen bedeutet das: Agentenidentität, Testbarkeit, wiederverwendbare Skills, Dataverse-Zugriffswege und Lizenznachweise gehören ab sofort in das Solution Design.</p>
+      <ul class="key-points">
+        <li><strong>Copilot Studio:</strong> Die neue Agent Experience ist als „production-ready preview“ verfügbar und kombiniert eine neue Orchestrierung mit Microsoft IQ, Skills, Memory und Multi-Agent-Delegation.</li>
+        <li><strong>Dataverse:</strong> MCP-, Management- und Coding-Agent-Funktionen machen Dataverse zunehmend zur programmierbaren Daten- und Tool-Schicht für Agents.</li>
+        <li><strong>Governance:</strong> Entra Agent IDs, Agent Inventory und Evaluationen liefern die Bausteine für einen belastbaren Agent-Lifecycle – sind aber noch nicht überall GA.</li>
+      </ul>
+    </article>
+    <aside class="card summary-side">
+      <h2>Relevanzradar</h2>
+      <p>Bewertung für typische Enterprise- und Verwaltungsprojekte.</p>
+      <div class="score"><div><strong>Hoch</strong><span>Copilot Studio Architektur</span></div><div><strong>Hoch</strong><span>Agent Governance</span></div><div><strong>Hoch</strong><span>Dataverse als Agent-Plattform</span></div><div><strong>Mittel</strong><span>September Release-Vorbereitung</span></div></div>
+    </aside>
+  </section>
+
+  <section class="content wrap">
+    <div class="articles">
+      <article id="copilot" class="card article">
+        <div class="topline"><span class="pill preview">Production-ready Preview</span><span class="pill">Copilot Studio</span></div>
+        <h2>1. Neue Agent Experience verändert das Zielbild für Copilot-Studio-Lösungen</h2>
+        <p class="intro">Microsoft führt die neue Agent Experience parallel zur klassischen Oberfläche ein. Sie nutzt eine erweiterte Orchestrierungs-Laufzeit und ergänzt Microsoft IQ, wiederverwendbare Skills, persistentes Memory sowie die Delegation an spezialisierte Agents.</p>
+        <div class="facts"><div class="fact"><strong>Was sich geändert hat</strong>Agent-Fähigkeiten werden modularer: Skills lassen sich paketieren und wiederverwenden; Memory speichert nutzerbezogenen Kontext; Microsoft IQ bindet Organisationsdaten ein.</div><div class="fact"><strong>Warum es wichtig ist</strong>Das ist mehr als ein UI-Refresh. Es verändert Komponentenmodell, Datenzugriff, Teststrategie und die Frage, welche Funktionen in klassischen Agents weitergeführt oder neu gebaut werden.</div></div>
+        <div class="action"><strong>Jetzt prüfen</strong>Für neue PoCs eine zweite Architekturspur auf der neuen Experience anlegen. Noch keine unkontrollierte Migration produktiver Agents: Funktionsparität, Region, Datenresidenz, Modellwahl, Exportierbarkeit und ALM-Verhalten je Use Case dokumentieren.</div>
+        <p class="sources-inline">Quelle: Microsoft „What's new in Copilot Studio“, aktualisiert am 16. Juli 2026.</p>
+      </article>
+
+      <article id="identity" class="card article">
+        <div class="topline"><span class="pill preview">Preview</span><span class="pill">Governance & Security</span></div>
+        <h2>2. Agenten erhalten eigene Identitäten – Governance muss objektbezogen werden</h2>
+        <p class="intro">Copilot Studio kann in der Vorschau automatisch Microsoft Entra Agent IDs erzeugen. Parallel steht ein Agent-Inventory-Schema zur Verfügung, mit dem Agents über Admin Center, API oder Azure Resource Graph inventarisiert und auditiert werden können.</p>
+        <div class="facts"><div class="fact"><strong>Was sich geändert hat</strong>Connector-Berechtigungen, Conditional Access und DLP können perspektivisch stärker einem einzelnen Agenten statt nur Maker, Umgebung oder Verbindung zugeordnet werden.</div><div class="fact"><strong>Warum es wichtig ist</strong>Das schließt eine zentrale Governance-Lücke: Bei autonomen oder geteilten Agents reicht die klassische Benutzeridentität nicht für Ownership, Least Privilege und saubere Auditierbarkeit.</div></div>
+        <div class="action"><strong>Jetzt anpassen</strong>Das Governance-Framework um ein Agent-Register erweitern: Business Owner, Technical Owner, Datenquellen, Tools, Agent ID, erlaubte Identitäten, Risiko-Klasse, Evaluationsstatus, letzte Prüfung und Stilllegungsprozess.</div>
+      </article>
+
+      <article id="dataverse" class="card article">
+        <div class="topline"><span class="pill confirmed">Teilweise GA</span><span class="pill preview">Teilweise Preview</span><span class="pill">Dataverse</span></div>
+        <h2>3. Dataverse wird zur Tool- und Kontextschicht für Coding Agents und M365 Copilot</h2>
+        <p class="intro">Der Release-Plan bündelt mehrere relevante Schritte: Dataverse SDK for Python für agentische Flows ist GA, verbesserte MCP-Tools und der Management MCP Server sind für Juni als GA ausgewiesen; Dataverse Skills für Coding Agents und das Chatten über Geschäftsdaten befinden sich in Preview. Verbesserte Record Descriptions für Copilot-/mention sind für Juli Preview und August GA geplant.</p>
+        <div class="facts"><div class="fact"><strong>Architekturwirkung</strong>Für Agenten gibt es nicht mehr nur „Dataverse Connector oder Knowledge“. MCP, Skills, Python SDK und semantische Beschreibung bilden verschiedene Zugriffs- und Ausführungsebenen.</div><div class="fact"><strong>ALM-Wirkung</strong>Zusätzlich zu Solutions müssen Skill-Pakete, Agent-Konfigurationen, Berechtigungen, Prompt-/Description-Qualität und serverseitige Tools versioniert und getestet werden.</div></div>
+        <div class="action"><strong>Jetzt lesen und prototypisieren</strong>Für einen bestehenden Dataverse-Use-Case eine Zugriffsmatrix erstellen: Knowledge/semantic retrieval, Connector, Custom API, MCP und SDK. Pro Option Datenumfang, Transaktionsbedarf, Identität, Auditierbarkeit, Latenz und ALM bewerten.</div>
+      </article>
+
+      <article id="licensing" class="card article">
+        <div class="topline"><span class="pill confirmed">Bestätigt / Dokumentation präzisiert</span><span class="pill">Managed Environments</span><span class="pill">Lizenzierung</span></div>
+        <h2>4. Managed-Environment-Lizenzierung ist klarer – aber weiterhin nutzungsbezogen</h2>
+        <p class="intro">Microsoft listet die qualifizierenden Entitlements inzwischen konkret auf. In einem Managed Environment muss aktive Nutzung durch eine passende Standalone-Lizenz oder einen qualifizierenden Pay-as-you-go-/Kapazitätsansatz abgedeckt sein. Ein Nutzer benötigt für die Managed-Environment-Berechtigung nicht gleichzeitig Power Apps Premium und Power Automate Premium; eine passende Premium-Lizenz kann genügen. Der Developer Plan deckt die Nutzung von Assets in Managed Environments nicht ab.</p>
+        <div class="facts"><div class="fact"><strong>Typisches Risiko</strong>„Managed Environment aktiviert“ wird als rein technischer Schalter behandelt, ohne App-, Flow- und Nutzerpopulation gegen die tatsächlichen Entitlements zu prüfen.</div><div class="fact"><strong>Projektwirkung</strong>Umgebungsstrategie, App-Freigabe und Lizenzdesign müssen gemeinsam geplant werden – besonders bei M365-seeded Nutzung, Developer-Umgebungen und gemischten App-/Flow-Szenarien.</div></div>
+        <div class="action"><strong>Jetzt prüfen</strong>Pro Managed Environment eine monatliche Lizenzkontrolle etablieren: aktive Nutzer, ausgeführte Apps/Flows, Lizenztyp, per-app/per-flow-Zuweisungen, PAYG Meter und Ausnahmen. Developer-Plan-Nutzung ausdrücklich aus Produktivpfaden ausschließen.</div>
+      </article>
+
+      <article id="release" class="card article">
+        <div class="topline"><span class="pill preview">Roadmap</span><span class="pill">Release Management</span></div>
+        <h2>5. 2026 Release Wave 2: Deutschland-Rollout für 25.–28. September einplanen</h2>
+        <p class="intro">Microsoft weist den GA-Rollout für Deutschland aktuell für das Wochenende 25. bis 28. September 2026 aus. Release Waves sind verpflichtende Updates und können nicht verschoben werden.</p>
+        <div class="facts"><div class="fact"><strong>Warum jetzt relevant</strong>Zwischen Mitte Juli und Ende September bleibt genug Zeit, Regressionstests und Kommunikationswege vorzubereiten – aber nicht, wenn erst beim ersten produktiven Effekt reagiert wird.</div><div class="fact"><strong>Was betroffen ist</strong>Insbesondere modellgesteuerte Oberflächen, Agent-/Copilot-Erlebnisse, Connector-Verhalten, Client-Komponenten und automatisch aktivierte Funktionen sollten in Testumgebungen beobachtet werden.</div></div>
+        <div class="action"><strong>Jetzt terminieren</strong>Ende August: Feature-Sichtung und Testfall-Freeze. Anfang September: Regression in ausgewählten Testumgebungen. 25.–28. September: Change-Fenster und erhöhte Überwachung. Danach: Abnahme und Aktualisierung der Betriebsdokumentation.</div>
+      </article>
+
+      <article id="architecture" class="card article">
+        <div class="topline"><span class="pill confirmed">Neue Referenzarchitektur</span><span class="pill">Architecture Center</span></div>
+        <h2>6. Outlook–SAP-Integration mit Power Apps erhält offizielle Referenzarchitektur</h2>
+        <p class="intro">Das Power Platform and Copilot Studio Architecture Center führt im Juli eine neue Referenzarchitektur zur Integration von Outlook und SAP mit Power Apps. Für Integrationsprojekte ist das eine nützliche Microsoft-Baseline für Verantwortungsgrenzen, Komponenten und Sicherheitsentscheidungen.</p>
+        <div class="action"><strong>Jetzt nutzen</strong>Die Architektur gegen bestehende Integrationsstandards spiegeln: Authentifizierung, On-behalf-of-Kontext, Connector-/API-Wahl, Fehlerbehandlung, DLP-Zonen, Monitoring und Support Ownership. Nicht blind übernehmen, sondern als Review-Checkliste verwenden.</div>
+      </article>
+
+      <article id="community" class="card article">
+        <div class="topline"><span class="pill community">Community-Fundstück</span><span class="pill">Praxis</span></div>
+        <h2>7. Community-Signal: Agent-Evaluation und UI-Tests werden Teil des normalen ALM</h2>
+        <p class="intro">Power Platform Weekly hebt aus der Praxis drei Themen hervor: strukturierte Agent Evaluation in Copilot Studio, UI-Tests für Power Platform/Dynamics 365 und die bewusste Wahl zwischen Dataverse Knowledge, Connector und MCP Server.</p>
+        <div class="facts"><div class="fact"><strong>Einordnung</strong>Das sind keine neuen Produktankündigungen, sondern ein starkes Reifegrad-Signal aus der Community: produktive Agenten brauchen messbare Qualität und automatisierte Regression.</div><div class="fact"><strong>Konsequenz</strong>„Solution import successful“ ist für agentische Lösungen kein ausreichendes Deployment-Kriterium. Es braucht fachliche Testsets, Tool-Aufruf-Tests, Berechtigungschecks und – bei kritischen Oberflächen – UI-Regression.</div></div>
+        <div class="action"><strong>Jetzt pilotieren</strong>Für einen Agenten 20–30 repräsentative Testfälle definieren, erwartete Quellen/Tools und Grenzfälle festlegen und die Auswertung als Quality Gate vor Produktion dokumentieren.</div>
+      </article>
+
+      <section class="card checklist">
+        <h2>Deine konkrete Aktionsliste</h2>
+        <ul class="checks">
+          <li><span>1</span><div><strong>Agent-Governance ergänzen:</strong> Agent-Register und Risiko-Klassifizierung als verbindliche Artefakte definieren.</div></li>
+          <li><span>2</span><div><strong>Neue Agent Experience testen:</strong> Einen abgegrenzten Use Case parallel auf klassischer und neuer Runtime prototypisieren.</div></li>
+          <li><span>3</span><div><strong>Dataverse-Zugriffsmatrix erstellen:</strong> Knowledge, Connector, API, MCP und SDK nicht mehr vermischen.</div></li>
+          <li><span>4</span><div><strong>Managed-Environment-Lizenzen auditieren:</strong> aktive Nutzung gegen Entitlements und Kapazitätszuweisungen abgleichen.</div></li>
+          <li><span>5</span><div><strong>September-Release vorbereiten:</strong> Regression, Kommunikationsplan und Hypercare-Fenster terminieren.</div></li>
+        </ul>
+      </section>
+
+      <section class="card source-list">
+        <h2>Quellen</h2>
+        <ol>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/whats-new">Microsoft Learn: What's new in Copilot Studio</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/data-platform/planned-features">Microsoft Learn: Dataverse – 2026 Release Wave 1 planned features</a></li>
+          <li><a href="https://learn.microsoft.com/en-gb/power-platform/admin/managed-environment-licensing">Microsoft Learn: Managed Environments licensing</a></li>
+          <li><a href="https://learn.microsoft.com/de-de/power-platform/admin/general-availability-deployment">Microsoft Learn: Bereitstellung für allgemeine Verfügbarkeit</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/power-platform/architecture/whats-new">Microsoft Learn: What's new in the Power Platform and Copilot Studio Architecture Center</a></li>
+          <li><a href="https://www.ppweekly.com/p/power-platform-weekly-issue-267">Power Platform Weekly – Issue #267</a></li>
+        </ol>
+      </section>
+    </div>
+
+    <aside class="card toc">
+      <h3>In dieser Ausgabe</h3>
+      <a href="#copilot">1. Neue Agent Experience</a>
+      <a href="#identity">2. Agentenidentität</a>
+      <a href="#dataverse">3. Dataverse & Agents</a>
+      <a href="#licensing">4. Managed Environments</a>
+      <a href="#release">5. Release Wave 2</a>
+      <a href="#architecture">6. Referenzarchitektur</a>
+      <a href="#community">7. Community-Signal</a>
+    </aside>
+  </section>
+</main>
+<footer><div class="wrap">Power Platform Brief · Sonderausgabe vom 18. Juli 2026 · Quellenstand zum Veröffentlichungszeitpunkt.</div></footer>
+</body>
+</html>
