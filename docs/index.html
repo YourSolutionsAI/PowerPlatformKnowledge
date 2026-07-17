@@ -87,7 +87,9 @@
     .archive-item {
       display: flex; justify-content: space-between; align-items: center; gap: 18px;
       padding: 18px 20px; border-radius: 16px; border: 1px solid var(--border); background: rgba(255,255,255,.82);
+      text-decoration: none; transition: .2s ease;
     }
+    .archive-item:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(34,48,78,.08); border-color: rgba(91,78,232,.35); }
     .archive-item span { color: var(--muted); }
 
     footer { border-top: 1px solid var(--border); padding: 28px 0 42px; color: var(--muted); font-size: .9rem; }
@@ -121,7 +123,7 @@
       <h1>Relevante Power-Platform-Entwicklungen. Ohne Release-Note-Rauschen.</h1>
       <p class="lead">Ein kuratierter Wochenbrief für Solution Architects zu Power Platform, Copilot Studio, Dataverse, Governance, ALM, Lizenzierung und Managed Environments.</p>
       <div class="hero-actions">
-        <a class="button primary" href="#aktuell">Aktuelle Ausgabe</a>
+        <a class="button primary" href="archive/2026-07-18.html">Aktuelle Ausgabe lesen</a>
         <a class="button" href="#archiv">Zum Archiv</a>
       </div>
     </section>
@@ -129,14 +131,18 @@
     <section id="aktuell" class="grid wrap">
       <article class="card latest">
         <div class="meta">
-          <span class="tag">Nächste Ausgabe</span>
-          <span class="tag">20. Juli 2026</span>
+          <span class="tag">Sonderausgabe</span>
+          <span class="tag">18. Juli 2026</span>
+          <span class="tag">7 Entwicklungen</span>
         </div>
-        <h2>Der Power Platform Brief wird vorbereitet</h2>
-        <p>Die erste Ausgabe erscheint am Montag. Sie enthält ausschließlich bestätigte Änderungen mit hoher Relevanz, wichtige Previews und Roadmap-Themen sowie klar gekennzeichnete Community-Fundstücke.</p>
+        <h2>Agents werden zur Plattformfrage – nicht nur zum Maker-Feature</h2>
+        <p>Die erste Ausgabe bündelt die wichtigsten aktuellen Entwicklungen rund um die neue Copilot-Studio-Agent-Experience, Agentenidentitäten, Dataverse als Agent-Plattform, Managed-Environment-Lizenzierung und die Vorbereitung auf Release Wave 2.</p>
         <div class="status">
-          <strong>Was jede Ausgabe liefert</strong>
-          Was hat sich geändert? Warum ist es relevant? Was solltest du lesen, prüfen oder an deinen Lösungen und Governance-Vorgaben anpassen?
+          <strong>Schwerpunkt dieser Ausgabe</strong>
+          Was du jetzt an Agent-Governance, ALM, Dataverse-Zugriffswegen, Lizenzprüfung und Release-Vorbereitung konkret anpassen solltest.
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="archive/2026-07-18.html">Sonderausgabe öffnen</a>
         </div>
       </article>
 
@@ -158,10 +164,10 @@
         <p>Neue Ausgaben werden hier chronologisch ergänzt.</p>
       </div>
       <div class="archive-list">
-        <div class="archive-item">
-          <strong>Noch keine veröffentlichte Ausgabe</strong>
-          <span>Erste Ausgabe: 20. Juli 2026</span>
-        </div>
+        <a class="archive-item" href="archive/2026-07-18.html">
+          <div><strong>Agents werden zur Plattformfrage</strong><br><span>Copilot Studio, Dataverse, Governance, Lizenzierung und Release Wave 2</span></div>
+          <span>18. Juli 2026 · Sonderausgabe</span>
+        </a>
       </div>
     </section>
   </main>
